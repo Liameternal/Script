@@ -5,7 +5,7 @@ CamScanner 解锁部分高级特权
 Quantumult X:
 
 [rewrite_local]
-^https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? url script-response-body https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js
+^https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? url script-response-body https://raw.githubusercontent.com/Liameternal/Script/main/CS.js
 
 [mitm]
 hostname = ap*.intsig.net
@@ -14,7 +14,7 @@ hostname = ap*.intsig.net
 Surge4 or Loon:
 
 [Script]
-http-response https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/CamScanner.js
+http-response https:\/\/(api|api-cs)\.intsig\.net\/purchase\/cs\/query_property\? requires-body=1,max-size=0,script-path=https://raw.githubusercontent.com/Liameternal/Script/main/CS.js
 
 [MITM]
 hostname = ap*.intsig.net
@@ -30,5 +30,6 @@ hostname = ap*.intsig.net
 
 **************************/
 let obj = JSON.parse($response.body);
-obj = {"data":{"psnl_vip_property":{"expiry":"1643731200"}}};
+obj.data.psnl_vip_property.expiry = 1767229200;
+obj.data.ocr_balance = 500000;
 $done({body: JSON.stringify(obj)});
